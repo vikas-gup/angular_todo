@@ -1,0 +1,45 @@
+<div ng-controller="TodoCtrl">
+ 	<form name="myForm" class="simple-form" ng-submit="create(todoTask)">
+		<label>Title: <input type="text" name = "todoTitle" ng-model="todoTask.title" required/></label><br />
+
+		<!-- {{myForm.todoTitle.$valid}} -->
+
+		<label>Description: <textarea ng-model="todoTask.description" /></label><br />
+		Status: 
+		<label><input type="radio" ng-model="todoTask.status" value="notStarted" />Not Started</label>
+		<label><input type="radio" ng-model="todoTask.status" value="working" />Working</label>
+		<label><input type="radio" ng-model="todoTask.status" value="completed" />Completed</label>
+
+		<br>
+
+		<input type="button" ng-click="reset()" value="Reset" />
+		<input type="submit" id="submit" value="Submit" />
+	</form>
+
+	<pre>todoTask = {{todoTask | json}}</pre>
+	<pre>master = {{master | json}}</pre>
+
+	<div>
+    	<ul>
+    		<span ng-repeat="x in todoList">
+	        	<li> 
+	        		Title: {{x.title}}
+	        	</li>
+	        	<li> 
+	        		Description: {{x.desc}} 
+	        	</li>
+	        	<li> 
+	        		Status: {{x.status}} 
+	        	</li>
+	        	<li>
+	        		<input type="button" ng-click="delete(x)" value="Delete" />
+	        		<input type="button" ng-click="update(x)" value="Update" />
+	        	</li>	
+	        	<br>
+        	</span>
+    	</ul>
+	</div>
+
+</div>
+
+<my-hello obj = "obj"> </my-hello>
