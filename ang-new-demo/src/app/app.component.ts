@@ -11,20 +11,19 @@ import { Todo } from './todo';
 export class AppComponent implements OnInit {
 
   todos: Todo[] = [];
+  newTodo: Todo = new Todo();
 
-  constructor(
-    private todoDataService: TodoDataService
-  ) {
-  }
+  constructor(private todoDataService: TodoDataService) {}
 
   public ngOnInit() {
-    this.todoDataService
-      .getAllTodos()
-      .subscribe(
-        (todos) => {
-          this.todos = todos;
-        }
-      );
+    var aa = this.todoDataService.getAllTodos();
+    aa.subscribe(
+      (todos) => {
+        debugger;
+        console.log(todos);
+        this.todos = todos;
+      }
+    );
   }
 
   onAddTodo(todo) {

@@ -8,26 +8,27 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/Rx';
+import { URLSearchParams, Jsonp } from '@angular/http';
 
 const API_URL = environment.apiUrl;
 
 @Injectable()
 export class ApiService {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private jsonp: Jsonp) {}
 
   public getAllTodos(): Observable<Todo[]> {
-  	debugger
-	return this.http
-		.get("http://localhost:3000/todo_tasks").map(res => {
-		    const todos = res.json();
-	        return todos.map((todo) => new Todo(todo));
+    var search = new URLSearchParams()
+    search.set('format', 'json');
+    return this.jsonp.get("http://localhost:3000/todo_tasks", {search}).map(res => {
+        const todos = res.json();
+        return todos.map((todo) => new Todo(todo));
 		})
-		.catch(this.handleError) ;
+		.catch(this.handleError);
   }
 
   public createTodo(todo: Todo): Observable<Todo> {
-    return this.http
+    return this.jsonp
       .post(API_URL + '/todos', todo)
       .map(response => {
         return new Todo(response.json());

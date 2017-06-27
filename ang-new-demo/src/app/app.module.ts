@@ -7,6 +7,7 @@ import { MyNewComponentComponent } from './my-new-component/my-new-component.com
 import { ApiService } from './api.service';
 import { BaseRequestOptions, Http, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { MockBackend } from '@angular/http/testing';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    JsonpModule
   ],
   providers: [
         {
