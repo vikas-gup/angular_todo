@@ -1,3 +1,17 @@
+<ul class="nav navbar-nav">
+  <li>
+    <a [routerLink]="['/about', 12]">About (id: 12)</a>
+  </li>
+  <li>
+    <a routerLink="my">My Comp</a>
+  </li>
+</ul>
+
+
+<div style="margin-top: 1rem;">
+    <button (click)="onClick()">My Comp (param: 22)</button>
+</div>
+
 <section class="todoapp">
   <header class="header">
     <h1>Todos</h1>
@@ -19,3 +33,5 @@
     <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
   </footer>
 </section>
+
+<router-outlet></router-outlet>

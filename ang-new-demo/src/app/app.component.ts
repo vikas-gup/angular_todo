@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from './todo-data.service';
 import { Todo } from './todo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   todos: Todo[] = [];
   newTodo: Todo = new Todo();
 
-  constructor(private todoDataService: TodoDataService) {}
+  constructor(private todoDataService: TodoDataService, private router: Router) {}
 
   public ngOnInit() {
     var aa = this.todoDataService.getAllTodos();
@@ -24,6 +25,10 @@ export class AppComponent implements OnInit {
         this.todos = todos;
       }
     );
+  }
+
+  onClick () {
+    this.router.navigate(['/about', 22]);
   }
 
   onAddTodo(todo) {
